@@ -28,16 +28,18 @@ export interface Article {
   title: string;
 
   // Bridge: Frontend expects string, Backend returns Object.
-  // Ideally, frontend components should be updated to handle Objects.
+  // ideally, frontend components should be updated to handle Objects.
   // For now, I will define these as unions to prevent build errors if I don't touch components.
   category: string | Category;
   author: string | User;
 
-  publishedAt?: string; // Frontend legacy
-  created_at?: string;  // Backend standard
+  // LEGACY FIELDS (Required for Frontend Mocks to work without crashing)
+  publishedAt: string;
+  imageUrl: string;
 
-  imageUrl?: string;      // Frontend legacy
-  cover_image_url?: string; // Backend standard
+  // BACKEND FIELDS (Optional for now)
+  created_at?: string;
+  cover_image_url?: string;
 
   excerpt: string;
   content: string;
